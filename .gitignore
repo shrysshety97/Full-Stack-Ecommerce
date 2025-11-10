@@ -38,7 +38,7 @@ Thumbs.db
 *.sln
 
 # Uploads and runtime files
-backend/uploads/
+#backend/uploads/
 frontend/dist/
 
 # Misc
