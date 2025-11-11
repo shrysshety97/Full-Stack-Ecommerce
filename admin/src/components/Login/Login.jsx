@@ -6,8 +6,6 @@ import axios from "axios";
 import { StoreContext } from "../../context/StoreContext";
 import {useNavigate } from "react-router-dom";
 
-
-export const url = "https://ecommerce-backend-pkje.onrender.com"
 const Login = ({ url }) => {
   const navigate=useNavigate();
   const {admin,setAdmin,token, setToken } = useContext(StoreContext);
