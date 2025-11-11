@@ -26,6 +26,20 @@ const __dirname = path.dirname(__filename);
 // Serve uploads folder publicly
 app.use("/images", express.static(path.join(__dirname, "/uploads")));
 
+import cors from "cors";
+
+app.use(
+  cors({
+    origin: [
+      "https://ecommerce-admin-ljeo.onrender.com",  // your admin frontend
+      "https://ecommerce-frontend-lgjw.onrender.com" // if you have user site
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
+
 // API Routes
 app.use("/api/food", foodRouter);
 app.use("/api/user", userRouter);
