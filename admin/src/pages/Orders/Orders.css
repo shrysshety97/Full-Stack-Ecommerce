@@ -1,4 +1,4 @@
-/* .order-item{
+.order-item{
     display: grid;
     grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
     align-items: start;
@@ -39,38 +39,4 @@
     .order-item img{
         width: 40px;
     }
-} */
-
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 20px;
-  align-items: center;
-}
-
-.filters input,
-.filters select,
-.filters button {
-  padding: 10px;
-  border: 1px solid tomato;
-  border-radius: 5px;
-  background-color: #fff8f5;
-  outline: none;
-}
-
-.filters button {
-  background-color: tomato;
-  color: white;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.filters button:hover {
-  background-color: #ff6347;
-}
-
-.date-range {
-  display: flex;
-  gap: 10px;
 }
