@@ -81,47 +81,18 @@ const userOrders = async (req, res) => {
 };
 
 // Listing orders for admin pannel
-export const listOrders = async (req, res) => {
+const listOrders = async (req, res) => {
   try {
-    // ✅ Verify Admin Access
-    const userData = await userModel.findById(req.body.userId);
-    if (!userData || userData.role !== "admin") {
-      return res.json({ success: false, message: "You are not authorized as admin" });
+    let userData = await userModel.findById(req.body.userId);
+    if (userData && userData.role === "admin") {
+      const orders = await orderModel.find({});
+      res.json({ success: true, data: orders });
+    } else {
+      res.json({ success: false, message: "You are not admin" });
     }
-
-    // ✅ Filters from query parameters
-    const { status, startDate, endDate, search } = req.query;
-    const filter = {};
-
-    // Filter by order status
-    if (status && status !== "All") {
-      filter.status = status;
-    }
-
-    // Filter by date range
-    if (startDate && endDate) {
-      filter.createdAt = {
-        $gte: new Date(startDate),
-        $lte: new Date(endDate),
-      };
-    }
-
-    // Filter by customer name or order ID
-    if (search) {
-      filter.$or = [
-        { "address.firstName": { $regex: search, $options: "i" } },
-        { "address.lastName": { $regex: search, $options: "i" } },
-        { _id: { $regex: search, $options: "i" } },
-      ];
-    }
-
-    // ✅ Fetch all orders that match filters
-    const orders = await orderModel.find(filter).sort({ createdAt: -1 });
-
-    res.json({ success: true, data: orders });
   } catch (error) {
-    console.error("Error fetching orders:", error);
-    res.json({ success: false, message: "Error fetching orders" });
+    console.log(error);
+    res.json({ success: false, message: "Error" });
   }
 };
 
