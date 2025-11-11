@@ -26,7 +26,7 @@ const __dirname = path.dirname(__filename);
 // Serve uploads folder publicly
 app.use("/images", express.static(path.join(__dirname, "/uploads")));
 
-import cors from "cors";
+
 
 app.use(
   cors({
