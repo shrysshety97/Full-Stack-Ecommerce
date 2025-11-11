@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { StoreContext } from "../../context/StoreContext";
 import { useNavigate } from "react-router-dom";
 
+export const url = "https://ecommerce-backend-pkje.onrender.com"
 const List = ({ url }) => {
   const navigate = useNavigate();
   const { token,admin } = useContext(StoreContext);
